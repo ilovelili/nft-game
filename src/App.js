@@ -21,8 +21,8 @@ function App() {
       .createRandomRob(_name)
       .send({
         from: _account,
-        value: blockchain.web3.utils.toWei("0.01", "ether"),
-        gasLimit: 6000000,
+        value: blockchain.web3.utils.toWei("0.001", "ether"),
+        gasLimit: 300000,
       })
       .once("error", (err) => {
         setLoading(false);

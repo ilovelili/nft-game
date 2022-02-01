@@ -12,7 +12,7 @@ contract RobToken is ERC721, Ownable {
 
     uint256 COUNTER;
 
-    uint256 fee = 0.01 ether;
+    uint256 fee = 0.001 ether;
 
     struct Rob {
         string name;

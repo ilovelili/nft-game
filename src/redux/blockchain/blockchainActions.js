@@ -44,11 +44,13 @@ export const connect = () => {
           method: "net_version",
         });
         console.log(networkId);
+
+        const networkData = RobToken.networks[networkId];
         if (networkId == 3) {
           // ropsten
           const robToken = new web3.eth.Contract(
             RobToken.abi,
-            "0x72d3c1fE87e60F5C7C6139949483caa15Cfdd236"
+            networkData.address
           );
           dispatch(
             connectSuccess({

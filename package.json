@@ -28,7 +28,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "deploy:sm:local": "deploy.sh development",
-    "deploy:sm:ropsten": "deploy.sh ropsten"
+    "deploy:sm:ropsten": "deploy.sh ropsten",
+    "docker:build": "docker build -t ilovelili/nft-game .",
+    "docker:run": "docker run -p 80:80 ilovelili/nft-game"
   },
   "eslintConfig": {
     "extends": [
