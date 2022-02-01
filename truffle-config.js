@@ -8,17 +8,6 @@ const etherscanApiKey = process.env.ETHERSCAN_API_KEY || "";
 
 module.exports = {
   networks: {
-    mainnet: {
-      networkCheckTimeout: 10000,
-      provider: () =>
-        new HDWalletProvider(
-          privKey,
-          `https://mainnet.infura.io/v3/${infuraProjectId}`
-        ),
-      network_id: 1,
-      gasPrice: Web3.utils.toWei("50", "gwei").toString(),
-      gas: 6000000,
-    },
     ropsten: {
       networkCheckTimeout: 10000,
       provider: () =>

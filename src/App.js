@@ -22,6 +22,7 @@ function App() {
       .send({
         from: _account,
         value: blockchain.web3.utils.toWei("0.01", "ether"),
+        gasLimit: 6000000,
       })
       .once("error", (err) => {
         setLoading(false);
