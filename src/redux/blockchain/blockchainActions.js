@@ -48,7 +48,7 @@ export const connect = () => {
           // ropsten
           const robToken = new web3.eth.Contract(
             RobToken.abi,
-            "0x9A7C6d6f6317C17c6aFb4F5D18B3e2F8E02F655F"
+            "0x72d3c1fE87e60F5C7C6139949483caa15Cfdd236"
           );
           dispatch(
             connectSuccess({
