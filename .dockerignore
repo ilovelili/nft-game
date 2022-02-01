@@ -1,0 +1,4 @@
+node_modules
+price.csv
+dest
+*.log
