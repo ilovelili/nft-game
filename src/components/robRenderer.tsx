@@ -1,4 +1,3 @@
-import React from "react";
 // cards
 import { parts } from "../parts/parts";
 import _r1 from "../assets/images/rarity/_rarity_1.png";
@@ -9,11 +8,19 @@ export interface Robot {
   name: string;
   rarity: number;
   dna: any;
-  id?: number,
-  level?: number,
+  id?: number;
+  level?: number;
 }
 
-const RobRenderer = ({ rob = null, size = 200, style }: {rob: Robot, size?: number, style?: any}): JSX.Element => {
+const RobRenderer = ({
+  rob = null,
+  size = 200,
+  style,
+}: {
+  rob: Robot;
+  size?: number;
+  style?: any;
+}): JSX.Element => {
   if (!rob) {
     return null;
   }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import { connect } from "./redux/blockchain/blockchainActions";
-import { fetchData } from "./redux/data/dataAction"
+import { fetchData } from "./redux/data/dataAction";
 import * as s from "./styles/globalStyles";
 import RobRenderer from "./components/robRenderer";
 import _color from "./assets/images/bg/_color.png";
@@ -10,12 +10,12 @@ import { useDispatch } from "react-redux";
 
 function App(): JSX.Element {
   const dispatch = useDispatch();
-  const blockchain = useAppSelector(state => state.blockchain);
-  const data = useAppSelector(state => state.data)
+  const blockchain = useAppSelector((state) => state.blockchain);
+  const data = useAppSelector((state) => state.data);
   const [loading, setLoading] = useState(false);
 
   console.log(data);
-  
+
   const mintNFT = (_account, _name) => {
     setLoading(true);
     blockchain.robToken.methods

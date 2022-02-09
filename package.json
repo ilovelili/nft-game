@@ -8,6 +8,7 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "@truffle/hdwallet-provider": "2.0.0",
+    "ethers": "^5.5.4",
     "ganache-core": "^2.13.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -19,18 +20,31 @@
     "truffle": "^5.4.31",
     "truffle-flattener": "^1.5.0",
     "truffle-plugin-verify": "^0.5.21",
-    "web-vitals": "^1.0.1",
-    "web3": "^1.7.0"
+    "web-vitals": "^1.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "prepare": "tsc && cp truffle-config.js ./dest",
+    "generate-types": "typechain --target=ethers-v5 --out-dir ./src/types 'src/contracts/*.json'",
     "deploy:sm:local": "deploy.sh development",
     "deploy:sm:ropsten": "deploy.sh ropsten",
     "docker:build": "docker build -t ilovelili/nft-game .",
     "docker:run": "docker run -p 80:80 ilovelili/nft-game"
+  },
+  "devDependencies": {
+    "@typechain/ethers-v5": "^9.0.0",
+    "@types/node": "^17.0.16",
+    "@types/react": "^17.0.39",
+    "@types/react-dom": "^17.0.11",
+    "dotenv": "^15.0.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.3",
+    "prettier": "^2.5.1",
+    "typechain": "^7.0.0",
+    "typescript": "^4.5.5"
   },
   "eslintConfig": {
     "extends": [
@@ -49,9 +63,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "dotenv": "^15.0.0",
-    "prettier": "^2.5.1"
   }
 }
