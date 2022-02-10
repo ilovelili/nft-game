@@ -1,13 +1,12 @@
-import { Robot } from '../../components/robRenderer';
+import { Robot } from "../../components/robRenderer";
 
 export interface DataState {
-  loading: boolean,
-  allRobs: Robot[],
-  allOwnerRobs: Robot[],
-  error: boolean,
-  errorMsg: any,
+  loading: boolean;
+  allRobs: Robot[];
+  allOwnerRobs: Robot[];
+  error: boolean;
+  errorMsg: any;
 }
-
 
 const initialState: DataState = {
   loading: false,
@@ -18,16 +17,19 @@ const initialState: DataState = {
 };
 
 export interface DataAction {
-  type: string,
-  payload: DataPayload,
+  type: string;
+  payload: DataPayload;
 }
 
 interface DataPayload {
-  allRobs: Robot[],
-  allOwnerRobs: Robot[],
+  allRobs: Robot[];
+  allOwnerRobs: Robot[];
 }
 
-const dataReducer = (state: DataState = initialState, action: DataAction): DataState => {
+const dataReducer = (
+  state: DataState = initialState,
+  action: DataAction
+): DataState => {
   switch (action.type) {
     case "CHECK_DATA_REQUEST":
       return {

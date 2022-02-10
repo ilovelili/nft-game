@@ -21,9 +21,13 @@
     "jsx": "react-jsx",
     "noImplicitAny": false,
     "declaration": true,
-    "outDir": "dest",
-  }, 
+    "outDir": "dest"
+  },
   "include": [
     "src"
+  ],
+  "exclude": [
+    "src/assets",
+    "src/types"
   ]
 }

@@ -1,4 +1,3 @@
-// log
 import store from "../store";
 import { DataAction } from "./dataReducer";
 
@@ -8,31 +7,31 @@ const fetchDataRequest = () => {
   };
 };
 
-const fetchDataSuccess = (payload): DataAction => {
+const fetchDataSuccess = (payload: any): DataAction => {
   return {
     type: "CHECK_DATA_SUCCESS",
     payload: payload,
   };
 };
 
-const fetchDataFailed = (payload): DataAction => {
+const fetchDataFailed = (payload: any): DataAction => {
   return {
     type: "CHECK_DATA_FAILED",
     payload: payload,
   };
 };
 
-export const fetchData = (account) => {
+export const fetchData = (account: any) => {
   return async (dispatch) => {
     dispatch(fetchDataRequest());
     try {
       let allRobs = await store
         .getState()
-        .blockchain.robToken.methods.getRobs()
+        .blockchain.robToken?.methods.getRobs()
         .call();
       let allOwnerRobs = await store
         .getState()
-        .blockchain.robToken.methods.getOwnerRobs(account)
+        .blockchain.robToken?.methods.getOwnerRobs(account)
         .call();
 
       dispatch(

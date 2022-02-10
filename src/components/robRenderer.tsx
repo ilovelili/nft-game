@@ -12,23 +12,31 @@ export interface Robot {
   level?: number;
 }
 
+const nullRobot = {
+  name: "",
+  rarity: 0,
+  dna: null,
+};
+
 const RobRenderer = ({
-  rob = null,
+  rob = nullRobot,
   size = 200,
   style,
 }: {
-  rob: Robot;
+  rob?: Robot;
   size?: number;
   style?: any;
-}): JSX.Element => {
+}): JSX.Element | null => {
   if (!rob) {
     return null;
   }
+
   let rarity = _r1;
 
   if (rob.rarity >= 80) {
     rarity = _r2;
   }
+
   if (rob.rarity >= 95) {
     rarity = _r3;
   }

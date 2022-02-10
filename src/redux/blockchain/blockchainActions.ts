@@ -1,11 +1,10 @@
-// constants
 import { AbiItem } from "web3-utils";
 import Web3 from "web3";
-import RobToken from "../../contracts/RobToken.json";
-// log
-import { fetchData } from "../data/dataActions";
+import { fetchData } from "../data/dataAction";
+import { RobToken } from "../../types/RobToken";
+import RobTokenABI from "../../contracts/RobToken.json";
 
-declare let window: any; 
+declare let window: any;
 
 const connectRequest = () => {
   return {
@@ -13,21 +12,21 @@ const connectRequest = () => {
   };
 };
 
-const connectSuccess = (payload) => {
+const connectSuccess = (payload: any) => {
   return {
     type: "CONNECTION_SUCCESS",
     payload: payload,
   };
 };
 
-const connectFailed = (payload) => {
+const connectFailed = (payload: any) => {
   return {
     type: "CONNECTION_FAILED",
     payload: payload,
   };
 };
 
-const updateAccountRequest = (payload) => {
+const updateAccountRequest = (payload: any) => {
   return {
     type: "UPDATE_ACCOUNT",
     payload: payload,
@@ -35,7 +34,7 @@ const updateAccountRequest = (payload) => {
 };
 
 export const connect = () => {
-  return async (dispatch) => {
+  return async (dispatch: any) => {
     dispatch(connectRequest());
     if (window.ethereum) {
       let web3 = new Web3(window.ethereum);
@@ -46,15 +45,17 @@ export const connect = () => {
         const networkId = await window.ethereum.request({
           method: "net_version",
         });
-        console.log(networkId);
 
-        const networkData = RobToken.networks[networkId];
+        const networkData = RobTokenABI.networks[networkId];
+
+        // Ropsten supported
+        // todo: add matic
         if (networkId === 3) {
-          // ropsten
           const robToken = new web3.eth.Contract(
-            RobToken.abi as AbiItem[],
+            RobTokenABI.abi as AbiItem[],
             networkData.address
-          );
+          ) as any as RobToken;
+
           dispatch(
             connectSuccess({
               account: accounts[0],
@@ -62,16 +63,18 @@ export const connect = () => {
               web3,
             })
           );
+
           // Add listeners start
-          window.ethereum.on("accountsChanged", (accounts) => {
+          window.ethereum.on("accountsChanged", (accounts: any) => {
             dispatch(updateAccount(accounts[0]));
           });
+
           window.ethereum.on("chainChanged", () => {
             window.location.reload();
           });
           // Add listeners end
         } else {
-          dispatch(connectFailed("Change network to Polygon."));
+          dispatch(connectFailed("Change network to Ropsten."));
         }
       } catch (err) {
         dispatch(connectFailed("Something went wrong."));
@@ -82,8 +85,8 @@ export const connect = () => {
   };
 };
 
-export const updateAccount = (account) => {
-  return async (dispatch) => {
+export const updateAccount = (account: any) => {
+  return async (dispatch: any) => {
     dispatch(updateAccountRequest({ account: account }));
     dispatch(fetchData(account));
   };
