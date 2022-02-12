@@ -2,13 +2,14 @@
 
 pragma solidity ^0.8.0;
 
-import "./IUniswapV2Router02.sol";
-import "./IUniswapV2Factory.sol";
+import "../interface/IUniswapV2Router02.sol";
+import "../interface/IUniswapV2Factory.sol";
 
 library DexPair {
     bytes4 private constant FACTORY_SELECTOR =
         bytes4(keccak256(bytes("factory()")));
 
+    // todo: use Polygon
     // WBNB https://bscscan.com/address/0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c
     address internal constant _wbnb =
         address(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c);

@@ -3,7 +3,7 @@
 pragma solidity ^0.8.0;
 
 import "./OriginOwner.sol";
-import "./DexPair.sol";
+import "../lib/DexPair.sol";
 
 contract DexListing is OriginOwner {
     address public immutable uniswapV2Router;

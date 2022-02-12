@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "./DexPair.sol";
+import "../lib/DexPair.sol";
 
 contract TransferFee {
     bytes4 private constant FACTORY_SELECTOR =

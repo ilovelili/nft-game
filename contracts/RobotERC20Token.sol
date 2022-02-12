@@ -2,14 +2,14 @@
 pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts/security/Pausable.sol";
 import "@openzeppelin/contracts/access/AccessControl.sol";
 
-import "./Pausable.sol";
-import "./GasPriceController.sol";
-import "./DexListing.sol";
-import "./TransferFee.sol";
+import "./module/GasPriceController.sol";
+import "./module/DexListing.sol";
+import "./module/TransferFee.sol";
 
-contract TankToken is
+contract RobotWarToken is
     ERC20,
     GasPriceController,
     DexListing,
@@ -21,8 +21,8 @@ contract TankToken is
     bytes32 private constant BURNER_ROLE = keccak256("BURNER_ROLE");
     bytes32 private constant ADMIN_ROLE = keccak256("ADMIN_ROLE");
 
-    string constant TOKEN_NAME = "RobotBattle Token";
-    string constant TOKEN_SYMBOL = "RBL";
+    string constant TOKEN_NAME = "Robot War Token";
+    string constant TOKEN_SYMBOL = "RWT";
 
     mapping(address => bool) private blackList;
     uint256 private initialTokensSupply = 1000000000 * 10**decimals(); // 1B

@@ -10,8 +10,7 @@ contract RobToken is ERC721, Ownable {
         ERC721(_name, _symbol)
     {}
 
-    uint256 COUNTER;
-
+    uint256 counter;
     uint256 fee = 0.001 ether;
 
     struct Rob {
@@ -47,11 +46,11 @@ contract RobToken is ERC721, Ownable {
     function _createRob(string memory _name) internal {
         uint8 randRarity = uint8(_createRandomNum(100));
         uint256 randDna = _createRandomNum(10**16);
-        Rob memory newRob = Rob(_name, COUNTER, randDna, 1, randRarity);
+        Rob memory newRob = Rob(_name, counter, randDna, 1, randRarity);
         robs.push(newRob);
-        _safeMint(msg.sender, COUNTER);
-        emit NewRob(msg.sender, COUNTER, randDna);
-        COUNTER++;
+        _safeMint(msg.sender, counter);
+        emit NewRob(msg.sender, counter, randDna);
+        counter++;
     }
 
     function createRandomRob(string memory _name) public payable {
